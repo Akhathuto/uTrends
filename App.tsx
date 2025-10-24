@@ -1,7 +1,6 @@
-
 import React, { useState } from 'react';
 import { Sidebar } from './components/Sidebar';
-import { MenuIcon, NoloIcon } from './components/Icons';
+import { MenuIcon, UTrendsIcon } from './components/Icons';
 import { Tool, ToolId } from './types';
 
 // Import all tool components
@@ -110,9 +109,9 @@ const App: React.FC = () => {
                     </button>
                      <div className="flex items-center">
                         <div className="bg-blue-600 p-1.5 rounded-md mr-2">
-                            <NoloIcon />
+                            <UTrendsIcon />
                         </div>
-                        <h1 className="text-lg font-bold">Creator AI</h1>
+                        <h1 className="text-lg font-bold">uTrends</h1>
                     </div>
                      <div className="w-8"></div>
                 </div>

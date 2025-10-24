@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to the **uTrend - AI Content Suite** application will be documented in this file.
+All notable changes to the **uTrends - AI Content Suite** application will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
@@ -31,12 +31,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 -   **Sidebar Redesign:** The sidebar navigation was restructured into more granular, collapsible groups for a more intuitive user experience.
--   **Branding Update:** Renamed the app to "Creator AI" in the UI for a more direct and user-friendly name.
+-   **Branding Update:** Renamed the app to "uTrends" in the UI for a more direct and user-friendly name.
 
 ## [1.0.0] - 2024-07-26
 
 ### Added
--   **Initial Release of uTrend:** First version of the application developed by Edgtec.
+-   **Initial Release of uTrends:** First version of the application developed by Edgtec.
 -   **Core Suites:** Organized into three main suites: "Discovery & Analytics," "AI Create," and "Strategy & Growth."
 -   **Foundation Tools:** Included initial versions of `Script Writer`, `Media Generator`, `Growth Planner`, `Content Analyzer`, `Trends & Keywords`, and more.
 -   **Basic AI Chat:** An initial version of the Nolo AI chat assistant.

@@ -190,7 +190,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ setActiveTool }) => {
     return (
         <div className="flex flex-col h-full space-y-8">
             <div className="text-center">
-                <h1 className="text-4xl font-bold">Creator AI Dashboard</h1>
+                <h1 className="text-4xl font-bold">uTrends Dashboard</h1>
                 <p className="text-gray-400 mt-2">Your command center for content creation.</p>
             </div>
 

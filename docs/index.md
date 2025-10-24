@@ -1,10 +1,10 @@
-# uTrend - AI Content Suite Documentation
+# uTrends - AI Content Suite Documentation
 
 ## 1. Introduction
 
-Welcome to the official documentation for **uTrend**, an all-in-one AI-powered platform for content creators. This application is designed, developed, and owned by **Edgtec**.
+Welcome to the official documentation for **uTrends**, an all-in-one AI-powered platform for content creators. This application is designed, developed, and owned by **Edgtec**.
 
-uTrend leverages the power of Google's advanced Gemini AI models to provide a seamless, end-to-end solution for the entire content creation lifecycle. Our goal is to empower creators by automating tedious tasks, sparking creativity, and providing data-driven strategic insights.
+uTrends leverages the power of Google's advanced Gemini AI models to provide a seamless, end-to-end solution for the entire content creation lifecycle. Our goal is to empower creators by automating tedious tasks, sparking creativity, and providing data-driven strategic insights.
 
 ## 2. Core Feature Suites
 
@@ -40,10 +40,10 @@ Tools focused on long-term planning, monetization, and maximizing your content's
 
 ## 3. Nolo AI: Your Autonomous Assistant
 
-Nolo AI is the central intelligence of the uTrend platform, accessible from the main sidebar. It operates in two modes:
+Nolo AI is the central intelligence of the uTrends platform, accessible from the main sidebar. It operates in two modes:
 
 -   **Chat Mode:** A conversational AI assistant for brainstorming, asking questions, and getting quick advice.
--   **Agent Mode:** This is where the true power of uTrend is unlocked. You can give the agent a high-level, multi-step command (e.g., "Write a script about the Roman Empire, then generate three thumbnail ideas for it"). The agent uses **Gemini's Function Calling** capability to autonomously control and execute the application's other tools (`Script Writer`, `Thumbnail Ideas`, etc.) to fulfill your request. The **Task Log** provides a transparent, real-time view of the agent's thought process and actions.
+-   **Agent Mode:** This is where the true power of uTrends is unlocked. You can give the agent a high-level, multi-step command (e.g., "Write a script about the Roman Empire, then generate three thumbnail ideas for it"). The agent uses **Gemini's Function Calling** capability to autonomously control and execute the application's other tools (`Script Writer`, `Thumbnail Ideas`, etc.) to fulfill your request. The **Task Log** provides a transparent, real-time view of the agent's thought process and actions.
 
 ## 4. Library
 
@@ -53,7 +53,7 @@ Nolo AI is the central intelligence of the uTrend platform, accessible from the 
 
 ### 5.1. AI-Assisted Development
 
-The uTrend platform is developed and maintained through an interactive process with a senior AI frontend engineer. All changes, from minor bug fixes to major feature releases, are implemented based on direct user requests.
+The uTrends platform is developed and maintained through an interactive process with a senior AI frontend engineer. All changes, from minor bug fixes to major feature releases, are implemented based on direct user requests.
 
 ### 5.2. Versioning
 

@@ -18,6 +18,10 @@ const Icon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   />
 );
 
+export const UTrendsIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+    <Icon {...props} strokeWidth="2.5"><path d="M4 20V4h4v12h8V4h4v16" /><path d="m4 12 8-8 8 8" /></Icon>
+);
+
 export const HomeIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
     <Icon {...props}><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></Icon>
 );

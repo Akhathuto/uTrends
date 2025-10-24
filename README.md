@@ -1,8 +1,8 @@
-# uTrend - AI Content Suite
+# uTrends - AI Content Suite
 
 **Your personal AI assistant and autonomous agent for content creation.**
 
-uTrend is an all-in-one, AI-powered platform designed to streamline the entire workflow for modern content creators. From discovering the next viral trend to generating full video scripts, creating media assets, and planning strategic growth, uTrend provides a comprehensive suite of tools powered by Google's Gemini API.
+uTrends is an all-in-one, AI-powered platform designed to streamline the entire workflow for modern content creators. From discovering the next viral trend to generating full video scripts, creating media assets, and planning strategic growth, uTrends provides a comprehensive suite of tools powered by Google's Gemini API.
 
 ---
 
@@ -26,7 +26,7 @@ uTrend is an all-in-one, AI-powered platform designed to streamline the entire w
 
 ### About Edgtec
 
-uTrend is a flagship product developed and maintained by **Edgtec**, a company dedicated to building cutting-edge AI solutions that empower creators and businesses. We believe in harnessing the power of artificial intelligence to unlock creativity and drive strategic growth.
+uTrends is a flagship product developed and maintained by **Edgtec**, a company dedicated to building cutting-edge AI solutions that empower creators and businesses. We believe in harnessing the power of artificial intelligence to unlock creativity and drive strategic growth.
 
 ---
 

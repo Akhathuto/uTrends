@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { ToolId } from '../types';
-import { HomeIcon, SparklesIcon, VideoEditIcon, SearchIcon, FileTextIcon, ThumbnailIcon, MessageSquarePlusIcon, RepeatIcon, TargetIcon, DollarSignIcon, UserHexagonIcon, NoloIcon, MyContentIcon, XIcon, MenuIcon, TrendingUpIcon } from './Icons';
+import { HomeIcon, SparklesIcon, VideoEditIcon, SearchIcon, FileTextIcon, ThumbnailIcon, MessageSquarePlusIcon, RepeatIcon, TargetIcon, DollarSignIcon, UserHexagonIcon, NoloIcon, MyContentIcon, XIcon, MenuIcon, TrendingUpIcon, UTrendsIcon } from './Icons';
 
 interface SidebarProps {
   activeTool: ToolId;
@@ -44,9 +43,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTool, setActiveTool, isO
         <div className="flex items-center justify-between p-4 border-b border-gray-800 flex-shrink-0">
           <div className="flex items-center">
             <div className="bg-blue-600 p-2 rounded-lg mr-3">
-                <NoloIcon />
+                <UTrendsIcon />
             </div>
-            <h1 className="text-xl font-bold">Creator AI</h1>
+            <h1 className="text-xl font-bold">uTrends</h1>
           </div>
           <button onClick={() => setIsOpen(false)} className="md:hidden text-gray-400 hover:text-white">
             <XIcon />
