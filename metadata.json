@@ -1,0 +1,8 @@
+{
+  "name": "uTrend - Content Suite",
+  "description": "An all-in-one AI-powered platform by Edgtec for content creators, featuring tools for trend discovery, content creation, and strategic growth",
+  "requestFramePermissions": [
+    "microphone",
+    "geolocation"
+  ]
+}
