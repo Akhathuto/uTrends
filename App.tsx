@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Sidebar } from './components/Sidebar';
 import { MenuIcon, UTrendsIcon } from './components/Icons';
 import { Tool, ToolId } from './types';
+import { useLocalStorage } from './hooks/useLocalStorage';
 
 // Import all tool components
 import { Dashboard } from './tools/Dashboard';
@@ -20,62 +21,46 @@ import { ThumbnailIdeas } from './tools/ThumbnailIdeas';
 import { VideoEditor } from './tools/VideoEditor';
 import { MonetizationGuide } from './tools/MonetizationGuide';
 import { ContentCalendar } from './tools/ContentCalendar';
+import { Settings } from './tools/Settings';
+
+type Theme = 'light' | 'dark';
 
 const App: React.FC = () => {
     const [activeTool, setActiveTool] = useState<ToolId>('dashboard');
     const [initialToolState, setInitialToolState] = useState<any>(null);
     const [sidebarOpen, setSidebarOpen] = useState(false);
+    const [theme, setTheme] = useLocalStorage<Theme>('utrends-theme', 'dark');
+
+    useEffect(() => {
+        const root = window.document.documentElement;
+        root.classList.remove('light', 'dark');
+        root.classList.add(theme);
+    }, [theme]);
 
     const handleSetActiveTool = (tool: Tool) => {
-        // This function handles the complex mapping from dashboard entry points to actual tools and their initial states.
-        setInitialToolState(null); // Reset state on tool change
+        setInitialToolState(null); 
 
         switch (tool) {
-            case 'image-generator':
-            case 'logo-creator':
-            case 'video-generator':
-            case 'animation-creator':
-            case 'gif-creator':
-                setActiveTool('media-generator');
-                setInitialToolState({ initialTool: tool });
-                break;
-            case 'trend-discovery':
-            case 'keyword-research':
-                setActiveTool('trends-keywords');
-                setInitialToolState({ initialTab: tool === 'trend-discovery' ? 'trends' : 'keywords' });
-                break;
+            case 'image-generator': case 'logo-creator': case 'video-generator': case 'animation-creator': case 'gif-creator':
+                setActiveTool('media-generator'); setInitialToolState({ initialTool: tool }); break;
+            case 'trend-discovery': case 'keyword-research':
+                setActiveTool('trends-keywords'); setInitialToolState({ initialTab: tool === 'trend-discovery' ? 'trends' : 'keywords' }); break;
             case 'channel-analytics':
-                setActiveTool('content-analyzer');
-                setInitialToolState({ initialTab: 'channel' });
-                break;
-            case 'nolo-ai':
-            case 'ai-agents':
-                 setActiveTool('nolo-ai');
-                 setInitialToolState({ initialTab: tool === 'ai-agents' ? 'agents' : 'chat' });
-                 break;
-            case 'content-generator':
-            case 'script-writer':
-                setActiveTool('script-writer');
-                break;
-            case 'strategy-report':
-            case 'channel-growth-plan':
-            case 'brand-connect':
-            case 'growth-planner':
-                setActiveTool('growth-planner');
-                break;
+                setActiveTool('content-analyzer'); setInitialToolState({ initialTab: 'channel' }); break;
+            case 'nolo-ai': case 'ai-agents':
+                 setActiveTool('nolo-ai'); setInitialToolState({ initialTab: tool === 'ai-agents' ? 'agents' : 'chat' }); break;
+            case 'content-generator': case 'script-writer':
+                setActiveTool('script-writer'); break;
+            case 'strategy-report': case 'channel-growth-plan': case 'brand-connect': case 'growth-planner':
+                setActiveTool('growth-planner'); break;
             case 'monetization-guide':
-                setActiveTool('monetization-guide');
-                break;
-            case 'repurpose-content':
-            case 'content-repurposing':
-                setActiveTool('content-repurposing');
-                break;
+                setActiveTool('monetization-guide'); break;
+            case 'repurpose-content': case 'content-repurposing':
+                setActiveTool('content-repurposing'); break;
             default:
-                setActiveTool(tool as ToolId);
-                break;
+                setActiveTool(tool as ToolId); break;
         }
     };
-
 
     const renderActiveTool = () => {
         switch (activeTool) {
@@ -95,16 +80,17 @@ const App: React.FC = () => {
             case 'video-editor': return <VideoEditor />;
             case 'monetization-guide': return <MonetizationGuide />;
             case 'content-calendar': return <ContentCalendar />;
+            case 'settings': return <Settings theme={theme} setTheme={setTheme} />;
             default: return <Dashboard setActiveTool={handleSetActiveTool} />;
         }
     };
 
     return (
-        <div className="h-screen w-screen bg-gray-900 text-white flex overflow-hidden">
+        <div className="h-screen w-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-white flex overflow-hidden">
              <Sidebar activeTool={activeTool} setActiveTool={handleSetActiveTool as (tool: ToolId) => void} isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
             <main className="flex-1 flex flex-col overflow-hidden">
-                 <div className="md:hidden flex items-center justify-between p-4 bg-gray-900 border-b border-gray-800 flex-shrink-0">
-                    <button onClick={() => setSidebarOpen(true)} className="text-gray-400 hover:text-white">
+                 <div className="md:hidden flex items-center justify-between p-4 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 flex-shrink-0">
+                    <button onClick={() => setSidebarOpen(true)} className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white">
                         <MenuIcon />
                     </button>
                      <div className="flex items-center">

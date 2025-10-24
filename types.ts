@@ -17,7 +17,8 @@ export type ToolId =
   | 'monetization-guide'
   | 'content-repurposing'
   | 'my-content'
-  | 'content-calendar';
+  | 'content-calendar'
+  | 'settings';
 
 export type Tool =
   | ToolId
