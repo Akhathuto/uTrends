@@ -4,20 +4,30 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "tsx server.ts",
     "build": "vite build",
+    "lint": "tsc --noEmit",
+    "start": "node server.ts",
     "preview": "vite preview"
   },
   "dependencies": {
-    "react-dom": "^19.2.0",
     "@google/genai": "^1.26.0",
+    "@tailwindcss/vite": "^4.2.2",
+    "@testing-library/react": "^16.3.0",
+    "@types/express": "^5.0.6",
+    "date-fns": "^4.1.0",
+    "express": "^5.2.1",
+    "lucide-react": "^0.577.0",
     "react": "^19.2.0",
-    "vitest": "^4.0.2",
-    "@testing-library/react": "^16.3.0"
+    "react-dom": "^19.2.0",
+    "react-markdown": "^10.1.0",
+    "tailwindcss": "^4.2.2",
+    "vitest": "^4.0.2"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
     "@vitejs/plugin-react": "^5.0.0",
+    "tsx": "^4.21.0",
     "typescript": "~5.8.2",
     "vite": "^6.2.0"
   }

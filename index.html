@@ -4,51 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>uTrends - AI Content Suite</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Custom scrollbar for webkit browsers */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        .dark ::-webkit-scrollbar-track {
-            background: #1f2937; /* bg-gray-800 */
-        }
-        .light ::-webkit-scrollbar-track {
-            background: #f3f4f6; /* bg-gray-100 */
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #4b5563; /* bg-gray-600 */
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #6b7280; /* bg-gray-500 */
-        }
-    </style>
-<script type="importmap">
-{
-  "imports": {
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.26.0",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "vitest": "https://aistudiocdn.com/vitest@^4.0.2",
-    "@testing-library/react": "https://aistudiocdn.com/@testing-library/react@^16.3.0"
-  }
-}
-</script>
-<script>
-    // Immediately apply the theme from localStorage to prevent FOUC
-    if (localStorage.getItem('utrends-theme') === 'dark' || (!('utrends-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-        document.documentElement.classList.remove('light');
-    } else {
-        document.documentElement.classList.add('light');
-        document.documentElement.classList.remove('dark');
-    }
-</script>
+    <link rel="stylesheet" href="/src/index.css">
 </head>
-<body>
+<body class="bg-slate-950 text-slate-200 antialiased">
     <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
+    <script type="module" src="/src/index.tsx"></script>
 </body>
 </html>
