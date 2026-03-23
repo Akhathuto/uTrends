@@ -3,8 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { Sidebar } from './components/Sidebar';
 import { MenuIcon } from './components/Icons';
 import { UtrendLogo } from './components/Logo';
+import { Login } from './components/Login';
+import { Loader2 } from 'lucide-react';
 import { Tool, ToolId } from './types';
 import { useLocalStorage } from './hooks/useLocalStorage';
+import { useAuth } from './contexts/AuthContext';
 
 // Import all tool components
 import { Dashboard } from './tools/Dashboard';
@@ -29,10 +32,10 @@ import AIVoiceCoPilot from './components/AIVoiceCoPilot';
 type Theme = 'light' | 'dark';
 
 const App: React.FC = () => {
+    const { user, loading } = useAuth();
     const [activeTool, setActiveTool] = useState<ToolId>('dashboard');
     const [initialToolState, setInitialToolState] = useState<any>(null);
     const [sidebarOpen, setSidebarOpen] = useState(false);
-    // FIX: The useLocalStorage hook requires a key as the first argument.
     const [theme, setTheme] = useLocalStorage<Theme>('theme', 'dark');
 
     useEffect(() => {
@@ -40,6 +43,18 @@ const App: React.FC = () => {
         root.classList.remove('light', 'dark');
         root.classList.add(theme);
     }, [theme]);
+
+    if (loading) {
+        return (
+            <div className="h-screen w-screen bg-[hsl(var(--background))] flex items-center justify-center">
+                <Loader2 className="animate-spin h-12 w-12 text-violet-500" />
+            </div>
+        );
+    }
+
+    if (!user) {
+        return <Login />;
+    }
 
     const handleSetActiveTool = (tool: Tool) => {
         setInitialToolState(null); 

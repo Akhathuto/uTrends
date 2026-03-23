@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocalStorage } from '../hooks/useLocalStorage';
+import { useAuth } from '../contexts/AuthContext';
 import { SavedContent, Script } from '../types';
 import { MyContentIcon, TrashIcon } from '../components/Icons';
 
@@ -95,11 +95,12 @@ const ContentRenderer = ({ item }: { item: SavedContent }) => {
 }
 
 export const MyContent: React.FC = () => {
-    const [savedContent, setSavedContent] = useLocalStorage<SavedContent[]>('my-content', []);
+    const { getSavedContent, deleteSavedContent } = useAuth();
+    const savedContent = getSavedContent();
 
     const handleDelete = (id: string) => {
         if (window.confirm('Are you sure you want to delete this item?')) {
-            setSavedContent(prev => prev.filter(item => item.id !== id));
+            deleteSavedContent(id);
         }
     };
 

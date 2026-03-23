@@ -49,6 +49,7 @@ export interface Script {
 
 export interface SavedContent {
   id: string;
+  userId: string;
   tool: string;
   title: string;
   content: Script | string | string[] | ThumbnailIdea[];
@@ -99,10 +100,12 @@ export interface User {
   email: string;
   plan: PlanName;
   role: UserRole;
+  keywordUsage?: KeywordUsage;
   country?: string;
   phone?: string;
   company?: string;
   channels?: Channel[];
+  providerId?: string;
 }
 
 export interface Channel {
@@ -139,8 +142,11 @@ export interface AuthContextType {
   user: User | null;
   loading: boolean;
   login: (email: string, pass: string) => Promise<void>;
+  loginWithGoogle: () => Promise<void>;
+  loginWithGithub: () => Promise<void>;
   signUp: (name: string, email: string, pass: string, plan: PlanName) => Promise<void>;
   logout: () => void;
+  resetPassword: (email: string) => Promise<void>;
   upgradePlan: (plan: 'starter' | 'pro') => void;
   getAllUsers: () => User[];
   updateUser: (userId: string, updates: Partial<Pick<User, 'plan' | 'role'>>) => void;
@@ -150,8 +156,9 @@ export interface AuthContextType {
   deleteUser: (userId: string) => void;
   getKeywordUsage: () => { remaining: number; limit: number | 'unlimited' };
   logKeywordAnalysis: () => void;
-  getContentHistory: () => HistoryItem[];
-  addContentToHistory: (item: Omit<HistoryItem, 'id' | 'timestamp'>) => void;
+  getSavedContent: () => SavedContent[];
+  addSavedContent: (item: Omit<SavedContent, 'id' | 'userId' | 'createdAt'>) => void;
+  deleteSavedContent: (id: string) => void;
 }
 
 export interface Plan {

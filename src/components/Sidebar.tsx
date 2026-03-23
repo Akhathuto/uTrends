@@ -1,7 +1,8 @@
 import React from 'react';
 import { ToolId } from '../types';
-import { HomeIcon, SparklesIcon, VideoEditIcon, SearchIcon, FileTextIcon, ThumbnailIcon, MessageSquarePlusIcon, RepeatIcon, TargetIcon, DollarSignIcon, UserHexagonIcon, NoloIcon, MyContentIcon, XIcon, MenuIcon, TrendingUpIcon, SettingsIcon } from './Icons';
+import { HomeIcon, SparklesIcon, VideoEditIcon, SearchIcon, FileTextIcon, ThumbnailIcon, MessageSquarePlusIcon, RepeatIcon, TargetIcon, DollarSignIcon, UserHexagonIcon, NoloIcon, MyContentIcon, XIcon, MenuIcon, TrendingUpIcon, SettingsIcon, LogOut } from './Icons';
 import { UtrendLogo } from './Logo';
+import { useAuth } from '../contexts/AuthContext';
 
 interface SidebarProps {
   activeTool: ToolId;
@@ -35,6 +36,7 @@ const toolConfig: { id: ToolId; name: string; icon: React.ReactNode; group: stri
 ];
 
 export const Sidebar: React.FC<SidebarProps> = ({ activeTool, setActiveTool, isOpen, setIsOpen }) => {
+  const { logout } = useAuth();
   const groupedTools = toolConfig.reduce((acc, tool) => {
     acc[tool.group] = acc[tool.group] || [];
     acc[tool.group].push(tool);
@@ -77,6 +79,15 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTool, setActiveTool, isO
             </div>
           ))}
         </nav>
+        <div className="p-4 border-t border-[hsl(var(--border))]">
+          <button
+            onClick={() => logout()}
+            className="w-full flex items-center px-3 py-2.5 text-sm font-medium rounded-md text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-all duration-200"
+          >
+            <div className="w-5 h-5 mr-3"><LogOut /></div>
+            <span>Logout</span>
+          </button>
+        </div>
       </div>
        {isOpen && <div className="fixed inset-0 bg-black/60 z-10 md:hidden backdrop-blur-sm" onClick={() => setIsOpen(false)}></div>}
     </>

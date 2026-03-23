@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Spinner from '../components/Spinner';
 import { FileTextIcon, SaveIcon, CopyIcon, CheckCircleIcon } from '../components/Icons';
-import { useLocalStorage } from '../hooks/useLocalStorage';
-import { SavedContent, Script } from '../types';
+import { useAuth } from '../contexts/AuthContext';
+import { Script } from '../types';
 import { useCopyToClipboard } from '../hooks/useCopyToClipboard';
 import { generateScript } from '../services/geminiService';
 
@@ -29,18 +29,15 @@ export const ScriptWriter: React.FC = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [saved, setSaved] = useState(false);
-    const [, setSavedContent] = useLocalStorage<SavedContent[]>('my-content', []);
+    const { addSavedContent } = useAuth();
 
     const handleSave = () => {
         if (!script) return;
-        const newContent: SavedContent = {
-            id: Date.now().toString(),
+        addSavedContent({
             tool: 'Script Writer',
             title: script.title,
             content: script,
-            createdAt: new Date().toISOString(),
-        };
-        setSavedContent(prev => [newContent, ...prev]);
+        });
         setSaved(true);
         setTimeout(() => setSaved(false), 2000);
     };

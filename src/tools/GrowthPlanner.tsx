@@ -2,8 +2,7 @@
 import React, { useState } from 'react';
 import Spinner from '../components/Spinner';
 import { SaveIcon, TargetIcon } from '../components/Icons';
-import { useLocalStorage } from '../hooks/useLocalStorage';
-import { SavedContent } from '../types';
+import { useAuth } from '../contexts/AuthContext';
 import { getGrowthPlan } from '../services/geminiService';
 
 export const GrowthPlanner: React.FC = () => {
@@ -12,18 +11,15 @@ export const GrowthPlanner: React.FC = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [saved, setSaved] = useState(false);
-    const [, setSavedContent] = useLocalStorage<SavedContent[]>('my-content', []);
+    const { addSavedContent } = useAuth();
 
 
     const handleSave = () => {
-        const newContent: SavedContent = {
-            id: Date.now().toString(),
+        addSavedContent({
             tool: 'Growth Planner',
             title: `Growth Plan for ${channelDescription.substring(0, 30)}...`,
             content: result,
-            createdAt: new Date().toISOString(),
-        };
-        setSavedContent(prev => [newContent, ...prev]);
+        });
         setSaved(true);
         setTimeout(() => setSaved(false), 2000);
     };

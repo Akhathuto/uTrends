@@ -88,8 +88,8 @@ describe('agentTools', async () => {
 
         it('should filter content based on the query in the title', async () => {
             const content: SavedContent[] = [
-                { id: '1', tool: 'Script', title: 'About Cats', content: '...', createdAt: '' },
-                { id: '2', tool: 'Script', title: 'About Dogs', content: '...', createdAt: '' },
+                { id: '1', userId: 'u1', tool: 'Script', title: 'About Cats', content: '...', createdAt: '' },
+                { id: '2', userId: 'u1', tool: 'Script', title: 'About Dogs', content: '...', createdAt: '' },
             ];
             localStorage.setItem('my-content', JSON.stringify(content));
 
@@ -100,8 +100,8 @@ describe('agentTools', async () => {
 
         it('should filter content based on the query in the content body', async () => {
              const content: SavedContent[] = [
-                { id: '1', tool: 'Planner', title: 'Plan A', content: 'This plan is about SEO.', createdAt: '' },
-                { id: '2', tool: 'Planner', title: 'Plan B', content: 'This plan is about marketing.', createdAt: '' },
+                { id: '1', userId: 'u1', tool: 'Planner', title: 'Plan A', content: 'This plan is about SEO.', createdAt: '' },
+                { id: '2', userId: 'u1', tool: 'Planner', title: 'Plan B', content: 'This plan is about marketing.', createdAt: '' },
             ];
             localStorage.setItem('my-content', JSON.stringify(content));
             

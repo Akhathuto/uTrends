@@ -1,0 +1,63 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Represents a user of the application",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique identifier for the user" },
+        "name": { "type": "string", "description": "Name of the user" },
+        "email": { "type": "string", "format": "email", "description": "Email address of the user" },
+        "plan": { "type": "string", "enum": ["free", "starter", "pro"], "description": "Subscription plan of the user" },
+        "role": { "type": "string", "enum": ["user", "admin"], "description": "Role of the user" },
+        "country": { "type": "string", "description": "Country of the user" },
+        "phone": { "type": "string", "description": "Phone number of the user" },
+        "company": { "type": "string", "description": "Company name of the user" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When the user account was created" }
+      },
+      "required": ["id", "email", "plan", "role"]
+    },
+    "SavedContent": {
+      "title": "SavedContent",
+      "description": "Represents content saved by a user",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique identifier for the saved content" },
+        "userId": { "type": "string", "description": "ID of the user who saved the content" },
+        "tool": { "type": "string", "description": "The tool used to generate the content" },
+        "title": { "type": "string", "description": "Title of the saved content" },
+        "content": { "type": "object", "description": "The actual content (script, ideas, etc.)" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When the content was saved" }
+      },
+      "required": ["id", "userId", "tool", "title", "content", "createdAt"]
+    },
+    "ActivityLog": {
+      "title": "ActivityLog",
+      "description": "Represents an activity performed by a user",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique identifier for the activity log" },
+        "userId": { "type": "string", "description": "ID of the user who performed the activity" },
+        "userName": { "type": "string", "description": "Name of the user" },
+        "action": { "type": "string", "description": "The action performed" },
+        "icon": { "type": "string", "description": "Icon associated with the action" },
+        "timestamp": { "type": "string", "format": "date-time", "description": "When the activity was performed" }
+      },
+      "required": ["id", "userId", "userName", "action", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Collection of user profiles"
+    },
+    "/users/{userId}/savedContent/{contentId}": {
+      "schema": "SavedContent",
+      "description": "Sub-collection of content saved by a specific user"
+    },
+    "/activities/{activityId}": {
+      "schema": "ActivityLog",
+      "description": "Global collection of activity logs"
+    }
+  }
+}

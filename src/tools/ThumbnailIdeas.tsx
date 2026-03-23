@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import Spinner from '../components/Spinner';
 import { SaveIcon, ThumbnailIcon } from '../components/Icons';
-import { useLocalStorage } from '../hooks/useLocalStorage';
-import { SavedContent, ThumbnailIdea } from '../types';
+import { useAuth } from '../contexts/AuthContext';
+import { ThumbnailIdea } from '../types';
 import { generateThumbnailIdeas } from '../services/geminiService';
 
 export const ThumbnailIdeas: React.FC = () => {
@@ -12,18 +12,15 @@ export const ThumbnailIdeas: React.FC = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [saved, setSaved] = useState(false);
-    const [, setSavedContent] = useLocalStorage<SavedContent[]>('my-content', []);
+    const { addSavedContent } = useAuth();
 
     const handleSave = () => {
         if (ideas.length === 0) return;
-        const newContent: SavedContent = {
-            id: Date.now().toString(),
+        addSavedContent({
             tool: 'Thumbnail Ideas',
             title: `Thumbnails for ${videoTitle.substring(0, 30)}...`,
             content: ideas,
-            createdAt: new Date().toISOString(),
-        };
-        setSavedContent(prev => [newContent, ...prev]);
+        });
         setSaved(true);
         setTimeout(() => setSaved(false), 2000);
     };

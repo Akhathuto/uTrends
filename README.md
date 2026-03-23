@@ -1,82 +1,70 @@
-# uTrends - The Autonomous AI Content Suite
+# 🌌 uTrends: The Autonomous AI Content Nexus
 
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://example.com)
-[![Version](https://img.shields.io/badge/version-1.3.0-blue)](docs/CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-2.0.0-blueviolet)](docs/CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey)](https://opensource.org/licenses/MIT)
 [![Maintained by](https://img.shields.io/badge/maintained%20by-Edgtec-darkblue)](https://example.com)
 
-**Your personal AI assistant and autonomous agent for content creation.**
+**The future of content creation is here. Meet your autonomous AI creative partner.**
 
 ---
 
-uTrends is a revolutionary, all-in-one platform designed to streamline the entire workflow for modern content creators. It's more than just a set of tools; it's an intelligent partner that can understand high-level goals and execute complex tasks on your behalf. From discovering the next viral trend to generating complete video assets and planning strategic growth, uTrends provides a comprehensive suite of features powered by Google's state-of-the-art Gemini AI models.
+uTrends is not just a tool; it's a **Creative Singularity**. A revolutionary, all-in-one platform designed to transcend the traditional boundaries of content creation. Powered by Google's state-of-the-art Gemini AI, uTrends is an intelligent, interactive, and autonomous ecosystem that understands your vision and executes it with superhuman precision.
 
-## ✨ Key Features
+## 🚀 The v2.0 Revolution
 
--   **🤖 Autonomous AI Agent (Nolo AI):** Go beyond simple chat. Give the agent complex commands (e.g., *"Create a video about space travel and suggest thumbnails"*), and it will autonomously use the app's tools to complete the multi-step task, showing you its work in a real-time task log.
--   **🎨 Comprehensive Creation Suite:**
-    -   **Media Generation:** Create high-quality images, logos, videos, animations, and GIFs from text prompts.
-    -   **Script Writing:** Generate complete, well-structured video scripts with catchy titles, hooks, and calls to action.
-    -   **Visual Design:** Design click-worthy thumbnail concepts and edit images with simple text commands.
--   **📈 Real-time Insights & Strategy:**
-    -   **Trend Discovery:** Discover what's trending right now on YouTube and TikTok with live, interactive trend cards.
-    -   **Strategic Planning:** Get custom growth plans, monetization guides, and in-depth keyword analysis to stay ahead of the curve.
-    -   **Content Calendar:** Plan your weekly content schedule with AI-generated ideas tailored to your niche.
--   **🎙️ Live & Interactive Avatars:** Design your own AI avatar and engage in real-time voice conversations. Bring your characters to life by generating lip-synced video animations with custom dialogue and gestures.
--   **📚 Persistent Content Library:** Save your best scripts, growth plans, and thumbnail ideas to your personal "My Content" library, which persists in your browser for easy access.
+Version 2.0 represents a monumental leap into the future of creative autonomy. We've moved beyond simple tools to create a system that actively participates in your creative journey.
 
-## 🛠️ Technology Stack
+-   **🤖 Nolo AI: The Autonomous Orchestrator:** Our advanced AI agent doesn't just chat; it *acts*. Give it a high-level goal, and watch as it autonomously orchestrates a multi-step workflow across our entire suite of tools, from trend discovery to final asset generation.
+-   **🎙️ Live Interaction & Avatars:** Engage in real-time, spoken conversations with your custom AI personas using the Gemini Live API. Bring your vision to life with lip-synced animations and dynamic gestures.
+-   **⚡ Real-Time Trend Nexus:** A live, interactive command center that pulses with the latest trends from YouTube and TikTok, providing instant, AI-powered insights and content ideas.
+-   **🔐 Enterprise-Grade Security:** Integrated with **Firebase Auth** and **Cloud Firestore**, ensuring your creative assets are synced, secure, and always at your fingertips.
 
--   **Frontend:** React, TypeScript, Tailwind CSS
--   **AI Engine:** Google Gemini API (including Gemini 2.5 Pro, Imagen 4.0, Veo, and the Live API for real-time voice)
--   **Core AI Features:** Leverages advanced **Function Calling** for autonomous agent capabilities and **Google Search grounding** for real-time information.
--   **Testing:** Vitest, React Testing Library
+## ✨ Core Creation Engine
 
-## 📂 Project Structure
+-   **🎨 Multi-Modal Generation:** Create high-fidelity images, logos, videos, animations, and GIFs from simple text prompts.
+-   **✍️ Script Mastery:** Generate complete, high-impact video scripts with hooks, calls to action, and strategic structure.
+-   **📈 Strategic Growth:** Get custom monetization guides, in-depth keyword analysis, and AI-powered content calendars.
+-   **📚 Persistent Content Library:** A secure, cloud-synced home for all your generated assets and creative ideas.
 
-A brief overview of the key directories in this project:
+## 🛠️ The Tech Stack of Tomorrow
+
+-   **Frontend:** React, TypeScript, Tailwind CSS (Modern, high-performance UI)
+-   **Backend:** Node.js, Express (Scalable and efficient)
+-   **Database & Auth:** Firebase (Real-time sync and robust security)
+-   **AI Core:** Google Gemini API (Gemini 2.5 Pro, Imagen 4.0, Veo, Gemini Live API)
+-   **Advanced AI Features:** Function Calling for autonomy, Google Search grounding for real-time intelligence.
+
+## 📂 Project Architecture
 
 ```
 /
-├── components/      # Reusable React components (Sidebar, Icons, etc.)
-├── docs/            # Project documentation (Roadmap, Changelog)
-├── hooks/           # Custom React hooks (useLocalStorage, useGeolocation)
-├── tools/           # Core feature components, one for each tool in the app
-├── utils/           # Utility functions (file/audio processing, agent tools)
-├── App.tsx          # Main application component and router
-└── index.tsx        # Application entry point
+├── components/      # Reusable UI modules
+├── contexts/        # Global state management (Auth, etc.)
+├── docs/            # Strategic Roadmap & Changelog
+├── hooks/           # Custom reactive logic
+├── services/        # AI Service Layer (Gemini API)
+├── tools/           # Core feature modules
+├── utils/           # Intelligent utility functions
+├── App.tsx          # Application Nexus
+├── firebase.ts      # Cloud Infrastructure
+└── index.tsx        # Entry Point
 ```
 
-## 🚀 Getting Started
+## 🛤️ Roadmap to the Future
 
-This project is designed to run in a specific AI-powered development environment. However, to set it up in a standard local environment, you would follow these steps:
+Our vision extends far beyond the present. We are building toward a future of **Hyper-Personalization & Multi-Modal Orchestration**.
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/edgtec/utrends.git
-    cd utrends
-    ```
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
-3.  **Set up environment variables:**
-    Create a `.env` file in the root directory and add your Google Gemini API key:
-    ```
-    API_KEY=YOUR_GEMINI_API_KEY
-    ```
-4.  **Run the development server:**
-    ```bash
-    npm run dev
-    ```
+-   **v1.0:** The Foundation - Core creation and discovery tools.
+-   **v2.0:** The Autonomous Leap - Nolo AI, Live Interaction, and Unified Workspace.
+-   **v3.0 (Upcoming):** The Creative Singularity - Hyper-personalized AI personas, seamless multi-modal orchestration, and real-time audience feedback integration.
 
-## 🤝 Contributing
+[Explore the full Roadmap here](docs/ROADMAP.md)
 
-This project is developed via an AI-assisted, conversational process. To contribute or request changes:
-1.  Clearly state the desired feature, enhancement, or bug fix.
-2.  Provide as much detail as possible, including visual mockups if applicable.
-3.  Use the "revert" command specified in the main documentation if an update causes issues.
+---
 
-## 🏢 About Edgtec
+## 🏢 Developed by Edgtec
 
-uTrends is a flagship product developed and maintained by **Edgtec**, a company dedicated to building cutting-edge AI solutions that empower creators and businesses. We believe in harnessing the power of artificial intelligence to unlock creativity and drive strategic growth.
+uTrends is a flagship product of **Edgtec**, where we are dedicated to building the AI solutions that will define the next era of human creativity.
+
+**Join the revolution. Create the future.**

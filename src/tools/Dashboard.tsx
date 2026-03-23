@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Tool, TrendItem, SavedContent } from '../types';
-import { useLocalStorage } from '../hooks/useLocalStorage';
+import { Tool, TrendItem } from '../types';
+import { useAuth } from '../contexts/AuthContext';
 import Spinner from '../components/Spinner';
 import { 
     SparklesIcon, FileTextIcon, TargetIcon, RepeatIcon, TrendingUpIcon, SearchIcon, ThumbnailIcon, UserHexagonIcon, DollarSignIcon, 
@@ -16,7 +16,8 @@ interface DashboardProps {
 
 // 1. At a Glance Stats
 const AtAGlance: React.FC = () => {
-    const [savedContent] = useLocalStorage<SavedContent[]>('my-content', []);
+    const { getSavedContent } = useAuth();
+    const savedContent = getSavedContent();
 
     const stats = savedContent.reduce((acc, item) => {
         if (item.tool === 'Script Writer') acc.scripts++;
@@ -82,7 +83,8 @@ const CreatorTip: React.FC = () => {
 
 // 3. Recent Content Preview
 const RecentContent: React.FC<{ setActiveTool: (tool: Tool) => void }> = ({ setActiveTool }) => {
-    const [savedContent] = useLocalStorage<SavedContent[]>('my-content', []);
+    const { getSavedContent } = useAuth();
+    const savedContent = getSavedContent();
     const recentItems = savedContent.slice(0, 3);
 
     if (recentItems.length === 0) {
@@ -202,6 +204,7 @@ const quickTools = [
 ];
 
 export const Dashboard: React.FC<DashboardProps> = ({ setActiveTool }) => {
+    const { user } = useAuth();
     const [greeting, setGreeting] = useState('');
     useEffect(() => {
         const hour = new Date().getHours();
@@ -213,7 +216,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ setActiveTool }) => {
     return (
         <div className="flex flex-col h-full space-y-8">
             <div>
-                <h1 className="text-3xl md:text-4xl font-bold tracking-tight">{greeting}, Creator!</h1>
+                <h1 className="text-3xl md:text-4xl font-bold tracking-tight">{greeting}, {user?.name.split(' ')[0]}!</h1>
                 <p className="text-[hsl(var(--muted-foreground))] mt-2">Your command center for content creation is ready.</p>
             </div>
             

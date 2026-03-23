@@ -1,0 +1,119 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: users
+    // Document ID: {userId}
+    // Fields:
+    //   - id: string (required)
+    //   - name: string (optional)
+    //   - email: string (required, email format)
+    //   - plan: string (required, enum: ['free', 'starter', 'pro'])
+    //   - role: string (required, enum: ['user', 'admin'])
+    //   - country: string (optional)
+    //   - phone: string (optional)
+    //   - company: string (optional)
+    //   - createdAt: timestamp (required)
+    //
+    // Collection: users/{userId}/savedContent
+    // Document ID: {contentId}
+    // Fields:
+    //   - id: string (required)
+    //   - userId: string (required)
+    //   - tool: string (required)
+    //   - title: string (required)
+    //   - content: map/any (required)
+    //   - createdAt: timestamp (required)
+    //
+    // Collection: activities
+    // Document ID: {activityId}
+    // Fields:
+    //   - id: string (required)
+    //   - userId: string (required)
+    //   - userName: string (required)
+    //   - action: string (required)
+    //   - icon: string (required)
+    //   - timestamp: timestamp (required)
+    //
+    // ===============================================================
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+    
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    
+    function isAdmin() {
+      return isAuthenticated() &&
+        (get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
+          (request.auth.token.email == "akhathuto@gmail.com" && request.auth.token.email_verified == true));
+    }
+    
+    function isValidUser(data) {
+      return data.keys().hasAll(['id', 'email', 'plan', 'role']) &&
+             data.id is string &&
+             data.email is string &&
+             data.plan in ['free', 'starter', 'pro'] &&
+             data.role in ['user', 'admin'] &&
+             data.email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+    }
+    
+    function isValidSavedContent(data) {
+      return data.keys().hasAll(['id', 'userId', 'tool', 'title', 'content', 'createdAt']) &&
+             data.id is string &&
+             data.userId is string &&
+             data.tool is string &&
+             data.title is string &&
+             data.title.size() < 200 &&
+             data.createdAt is timestamp;
+    }
+    
+    function isValidActivity(data) {
+      return data.keys().hasAll(['id', 'userId', 'userName', 'action', 'timestamp']) &&
+             data.id is string &&
+             data.userId is string &&
+             data.userName is string &&
+             data.action is string &&
+             data.timestamp is timestamp;
+    }
+
+    // ===============================================================
+    // Rules
+    // ===============================================================
+
+    match /users/{userId} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow create: if isAuthenticated() && isValidUser(request.resource.data) && 
+                    ((isOwner(userId) && request.resource.data.role == 'user') || isAdmin());
+      allow update: if isAuthenticated() && isValidUser(request.resource.data) && 
+                    ((isOwner(userId) && request.resource.data.role == resource.data.role) || isAdmin());
+      allow delete: if isAdmin();
+
+      match /savedContent/{contentId} {
+        allow read: if isOwner(userId) || isAdmin();
+        allow create: if isOwner(userId) && isValidSavedContent(request.resource.data);
+        allow update: if isOwner(userId) && isValidSavedContent(request.resource.data);
+        allow delete: if isOwner(userId) || isAdmin();
+      }
+    }
+
+    match /activities/{activityId} {
+      allow read: if isAdmin();
+      allow create: if isAuthenticated() && isValidActivity(request.resource.data);
+      allow update, delete: if isAdmin();
+    }
+    
+    match /test/connection {
+      allow read: if true;
+    }
+  }
+}
